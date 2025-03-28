@@ -1,26 +1,30 @@
 const tutorials = [
-  "what does the this keyword mean?",
-  "What is the Constructor OO pattern?",
-  "implementing Blockchain Web API",
+  "What Does The This Keyword Mean?",
+  "What Is The Constructor OO Pattern?",
+  "Implementing Blockchain Web API",
   "The Test Driven Development Workflow",
-  "What is NaN and how Can we Check for it",
-  "What is the difference between stopPropagation and preventDefault?",
-  "Immutable State and Pure Functions",
-  "what is the difference between == and ===?",
-  "what is the difference between event capturing and bubbling?",
-  "what is JSONP?",
+  "What Is NaN And How Can We Check For It",
+  "What Is The Difference Between StopPropagation And PreventDefault?",
+  "Immutable State And Pure Functions",
+  "What Is The Difference Between == And ===?",
+  "What Is The Difference Between Event Capturing And Bubbling?",
+  "What Is JSONP?"
 ];
 
-// Function to convert titles to title case
 function titleCased() {
-  return tutorials.map((tutorial) => {
-    // Split each tutorial string into words, capitalize each word, then join them back together
-    return tutorial
-      .split(" ")
-      .map((word) => {
+  const smallWords = [
+    'a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'if', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet', 'with'
+  ];
+
+  return tutorials.map(title => {
+    return title.split(' ').map((word, index) => {
+      // Capitalize the first word and any word not in smallWords
+      if (index === 0 || !smallWords.includes(word.toLowerCase())) {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-      })
-      .join(" ");
+      }
+      // For small words, leave them in lowercase (unless it's the first word)
+      return word.toLowerCase();
+    }).join(' ');
   });
 }
 
