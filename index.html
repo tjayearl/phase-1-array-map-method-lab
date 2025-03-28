@@ -7,22 +7,10 @@
   <title>JavaScript Lab</title>
 </head>
 <body>
-  <h1>Title Cased Tutorials</h1>
-  <ul id="tutorial-list">
-    <!-- The tutorial titles will be dynamically added here -->
-  </ul>
-
-  <script type="text/javascript" src="index.js"></script> <!-- Link to your external JavaScript file -->
-  <script>
-    // Call the titleCased function and display the results in the <ul>
-    const titleCasedTutorials = titleCased();
-    const tutorialList = document.getElementById('tutorial-list'); // Find the <ul> element
-
-    titleCasedTutorials.forEach((tutorial) => {
-      const listItem = document.createElement('li'); // Create a new list item for each tutorial
-      listItem.textContent = tutorial; // Set the text of the list item to the title
-      tutorialList.appendChild(listItem); // Append the list item to the <ul>
-    });
-  </script>
+  <h1>JavaScript Tutorial List</h1>
+  <ul id="tutorial-list"></ul> <!-- Empty list to be populated by JavaScript -->
+  
+  <script src="index.js"></script> <!-- Link to your JavaScript file -->
 </body>
 </html>
+

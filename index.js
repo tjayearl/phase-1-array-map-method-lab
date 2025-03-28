@@ -11,21 +11,26 @@ const tutorials = [
   "What Is JSONP?"
 ];
 
-function titleCased() {
-  const smallWords = [
-    'a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'if', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet', 'with'
-  ];
-
-  return tutorials.map(title => {
-    return title.split(' ').map((word, index) => {
-      // Capitalize the first word and any word not in smallWords
-      if (index === 0 || !smallWords.includes(word.toLowerCase())) {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-      }
-      // For small words, leave them in lowercase (unless it's the first word)
-      return word.toLowerCase();
-    }).join(' ');
+function titleCased(tutorials) {
+  return tutorials.map(tutorial => {
+    return tutorial
+      .split(" ")
+      .map(word => {
+        if (['API', 'JSONP'].includes(word)) {
+          return word.toUpperCase();
+        }
+        return word.length > 1 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word;
+      })
+      .join(" ");
   });
 }
 
-console.log(titleCased());
+// Get the list element from the HTML
+const listElement = document.getElementById('tutorial-list');
+
+// Display the titleCased tutorials in the list
+titleCased(tutorials).forEach(tutorial => {
+  const listItem = document.createElement('li');
+  listItem.textContent = tutorial;
+  listElement.appendChild(listItem); // Add each tutorial as a list item
+});
