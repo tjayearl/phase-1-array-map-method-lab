@@ -1,4 +1,3 @@
-// Array of tutorial names
 const tutorials = [
   "What Does The This Keyword Mean?",
   "What Is The Constructor OO Pattern?",
@@ -12,25 +11,21 @@ const tutorials = [
   "What Is JSONP?"
 ];
 
-// Function to title case the tutorial names
 function titleCased(tutorials) {
+  if (!tutorials || !Array.isArray(tutorials)) {
+    throw new Error("tutorials is not an array or is undefined");
+  }
+  
   return tutorials.map(tutorial => {
     return tutorial
       .split(" ")
       .map(word => {
+        // Capitalize the first letter and make the rest lowercase
         return word.length > 1 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word;
       })
       .join(" ");
   });
 }
 
-// Get the tutorial list element
-const tutorialList = document.getElementById('tutorial-list');
-
-// Add each tutorial to the list
-titleCased(tutorials).forEach(tutorial => {
-  const listItem = document.createElement('li');
-  listItem.textContent = tutorial;
-  tutorialList.appendChild(listItem);
-});
+console.log(titleCased(tutorials)); // Call the function with the tutorials array
 
