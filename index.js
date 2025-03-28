@@ -11,15 +11,16 @@ const tutorials = [
   "what is JSONP?",
 ];
 
+// Function to convert titles to title case
 function titleCased() {
   return tutorials.map((tutorial) => {
+    // Split each tutorial string into words, capitalize each word, then join them back together
     return tutorial
-      .split(' ') // Split the string into individual words
+      .split(" ")
       .map((word) => {
-        // Capitalize the first letter of each word
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
-      .join(' '); // Join the words back together
+      .join(" ");
   });
 }
 
