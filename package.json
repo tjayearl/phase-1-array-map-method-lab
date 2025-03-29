@@ -4,12 +4,17 @@
   "description": "A JavaScript lab",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha --timeout 5000 -R mocha-multi --reporter-options spec=-,json=.results.json"
   },
   "author": "flatironschool",
-  "license": "MIT",
+  "license": "Included in Repo",
   "devDependencies": {
-    "chai": "^4.5.0",
-    "mocha": "^10.8.2"
+    "babel-core": "^5.8.38",
+    "babel-preset-env": "^0.0.0",
+    "chai": "4.1.2",
+    "jsdom": "^26.0.0",
+    "mocha": "^5.0.0",
+    "mocha-jsdom": "~1.1.0",
+    "mocha-multi": "^1.0.1"
   }
 }

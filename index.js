@@ -1,3 +1,27 @@
+// index.js
+
+function titleCased(tutorials) {
+  return tutorials.map(tutorial => {
+    return tutorial
+      .split(" ")
+      .map(word => {
+        return word.length > 1 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word;
+      })
+      .join(" ");
+  });
+}
+
+function displayTutorials() {
+  const list = document.getElementById("tutorial-list");
+  const titleCasedTutorials = titleCased(tutorials);
+  
+  titleCasedTutorials.forEach(tutorial => {
+    const listItem = document.createElement("li");
+    listItem.textContent = tutorial;
+    list.appendChild(listItem);
+  });
+}
+
 const tutorials = [
   "What Does The This Keyword Mean?",
   "What Is The Constructor OO Pattern?",
@@ -11,26 +35,4 @@ const tutorials = [
   "What Is JSONP?"
 ];
 
-function titleCased() {
-  return tutorials.map(tutorial =>
-    tutorial
-      .split(" ")
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join(" ")
-  );
-}
-
-function displayTutorials() {
-  const list = document.getElementById("tutorial-list");
-  const titleCasedTutorials = titleCased();
-  
-  titleCasedTutorials.forEach(tutorial => {
-    const listItem = document.createElement("li");
-    listItem.textContent = tutorial;
-    list.appendChild(listItem);
-  });
-}
-
 displayTutorials();
-
-module.exports = { titleCased };

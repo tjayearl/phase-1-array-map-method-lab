@@ -1,18 +1,24 @@
-const { expect } = require("chai");
-const titleCased = require("../index"); // Ensure index.js exports titleCased
+// test/test.js
 
-describe("titleCased function", () => {
-  it("should capitalize each word in the tutorials array", () => {
+const chai = require('chai');
+const expect = chai.expect;
+const { titleCased } = require('../index'); // Make sure the path to index.js is correct
+
+describe('titleCased function', function() {
+  it('should capitalize the first letter of each word in a string', function() {
     const tutorials = [
-      "what does the this keyword mean?",
-      "what is the constructor oo pattern?",
+      "What Does The This Keyword Mean?",
+      "What Is The Constructor OO Pattern?",
+      "Implementing Blockchain Web API"
     ];
-
-    const expectedOutput = [
+    
+    const result = titleCased(tutorials);
+    const expected = [
       "What Does The This Keyword Mean?",
       "What Is The Constructor Oo Pattern?",
+      "Implementing Blockchain Web Api"
     ];
-
-    expect(titleCased(tutorials)).to.deep.equal(expectedOutput);
+    
+    expect(result).to.deep.equal(expected);
   });
 });
