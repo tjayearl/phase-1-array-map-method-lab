@@ -1,3 +1,4 @@
+// Original tutorials array
 const tutorials = [
   "What Does The This Keyword Mean?",
   "What Is The Constructor OO Pattern?",
@@ -11,21 +12,29 @@ const tutorials = [
   "What Is JSONP?"
 ];
 
-function titleCased(tutorials) {
-  if (!tutorials || !Array.isArray(tutorials)) {
-    throw new Error("tutorials is not an array or is undefined");
-  }
-  
+// Function to convert titles to title case
+function titleCased() {
   return tutorials.map(tutorial => {
     return tutorial
-      .split(" ")
-      .map(word => {
-        // Capitalize the first letter and make the rest lowercase
-        return word.length > 1 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word;
-      })
-      .join(" ");
+      .split(" ") // Split title into words
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter
+      .join(" "); // Join words back into a sentence
   });
 }
 
-console.log(titleCased(tutorials)); // Call the function with the tutorials array
+// Function to display the list in HTML
+function displayTutorials() {
+  const listContainer = document.getElementById("tutorials-list"); // Find the HTML element
+  if (!listContainer) {
+    console.error("Element with ID 'tutorials-list' not found.");
+    return;
+  }
 
+  const formattedTitles = titleCased(); // Get the formatted titles
+  listContainer.innerHTML = formattedTitles
+    .map(tutorial => `<li>${tutorial}</li>`)
+    .join(""); // Convert array into list items and add to HTML
+}
+
+// Run the function after the page loads
+document.addEventListener("DOMContentLoaded", displayTutorials);
