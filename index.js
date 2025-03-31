@@ -1,38 +1,23 @@
-// index.js
-
-function titleCased(tutorials) {
-  return tutorials.map(tutorial => {
-    return tutorial
-      .split(" ")
-      .map(word => {
-        return word.length > 1 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word;
-      })
-      .join(" ");
-  });
-}
-
-function displayTutorials() {
-  const list = document.getElementById("tutorial-list");
-  const titleCasedTutorials = titleCased(tutorials);
-  
-  titleCasedTutorials.forEach(tutorial => {
-    const listItem = document.createElement("li");
-    listItem.textContent = tutorial;
-    list.appendChild(listItem);
-  });
-}
-
 const tutorials = [
-  "What Does The This Keyword Mean?",
-  "What Is The Constructor OO Pattern?",
-  "Implementing Blockchain Web API",
+  "what does the this keyword mean?",
+  "What is the Constructor OO pattern?",
+  "implementing Blockchain Web API",
   "The Test Driven Development Workflow",
-  "What Is NaN And How Can We Check For It",
-  "What Is The Difference Between StopPropagation And PreventDefault?",
-  "Immutable State And Pure Functions",
-  "What Is The Difference Between == And ===?",
-  "What Is The Difference Between Event Capturing And Bubbling?",
-  "What Is JSONP?"
+  "What is NaN and how Can we Check for it",
+  "What is the difference between stopPropagation and preventDefault?",
+  "Immutable State and Pure Functions",
+  "what is the difference between == and ===?",
+  "what is the difference between event capturing and bubbling?",
+  "what is JSONP?",
 ];
 
-displayTutorials();
+function titleCased() {
+  return tutorials.map(title =>
+    title
+      .split(" ")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  );
+}
+
+console.log(titleCased());
